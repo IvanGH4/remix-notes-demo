@@ -31,7 +31,7 @@ export default function Notes() {
               key={note._id}
               className={`note ${note.important ? "important" : ""}`}
             >
-              <Link to={note._id}>
+              <Link to={`/note/${note._id}`}>
                 <h2>{note.title}</h2>
               </Link>
             </div>

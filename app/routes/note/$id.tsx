@@ -38,7 +38,10 @@ export default function SingleNote() {
 
   return (
     <div>
-      <Link to='/notes'>Back</Link>
+      <div className="links_header">
+        <Link to='/notes'>Back</Link>
+        <Link to={`/note/update/${data._id}`}>Edit</Link>
+      </div>
       <h2>{data.title}</h2>
       <small>{moment(data.createdAt).format('MMM DD, YYYY')}</small>
       <p>{data.content}</p>

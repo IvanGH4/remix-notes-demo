@@ -56,7 +56,7 @@ export default function New() {
           <label htmlFor='important'>Important</label>
         </div>
         <div className='form-control'>
-          <button type='submit'>Save</button>
+          <button type='submit' disabled={transition.state === 'submitting'}>Save</button>
         </div>
       </Form>
       {actionData?.error && <p>There was an error, try again</p>}

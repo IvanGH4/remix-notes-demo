@@ -70,6 +70,26 @@ body {
   color: white;
 }
 
-.note.important {
+.note.important h2 {
+  position: relative;
   color: green;
+}
+
+.note.important h2::before {
+  content: '';
+  background-image: url('/important.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  left: -30px;
+  top: 0;
+  width: 25px;
+  height: 25px;
+}
+
+.links_header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
 }
