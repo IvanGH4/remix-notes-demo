@@ -1,14 +1,7 @@
 import { useLoaderData, Link, Outlet } from "remix";
 import type { LoaderFunction } from "remix";
-
-interface Note {
-  _id: string;
-  title: string;
-  content: string;
-  important: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+import { Note } from "~/types";
+import NoteCard from "~/components/NoteCard";
 
 export const loader: LoaderFunction = async () => {
   const api_url: string = process.env.API_URL;
@@ -25,17 +18,7 @@ export default function Notes() {
       <Link to='new'>Add new note</Link>
       <Outlet />
       <div className='notes'>
-        {notes &&
-          notes.map((note) => (
-            <div
-              key={note._id}
-              className={`note ${note.important ? "important" : ""}`}
-            >
-              <Link to={`/note/${note._id}`}>
-                <h2>{note.title}</h2>
-              </Link>
-            </div>
-          ))}
+        {notes && notes.map((note) => <NoteCard key={note._id} note={note} />)}
       </div>
     </>
   );

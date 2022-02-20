@@ -93,3 +93,7 @@ body {
   flex-direction: column;
   gap: 15px 0;
 }
+
+.note_card a {
+  text-decoration: none;
+}
