@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  padding: 50px;
+}
+
+.add_note-form {
+  max-width: 380px;
+}
+
+.add_note-form_header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add_note-form_header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control label {
+  margin: 10px 0;
+}
+
+.form-control.checkbox {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.notes {
+  margin-top: 20px;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+}
+
+.note button {
+  margin-left: 10px;
+  background: none;
+  border: solid 1px red;
+  color: red;
+  padding: 2px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .2s ease-in;
+}
+
+.note button:hover {
+  background: red;
+  border: solid 1px white;
+  color: white;
+}
+
+.note.important {
+  color: green;
+}
