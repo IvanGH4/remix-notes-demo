@@ -54,14 +54,16 @@ export default function SearchAppBar() {
               </MenuItem>
             </Menu>
           </IconButton>
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Notes
-          </Typography>
+            <Typography
+              variant='h6'
+              noWrap
+              component='div'
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+            <Link to="/" style={{ color: 'white' }}>
+              Notes
+            </Link>
+            </Typography>
           <SearchInput />
         </Toolbar>
       </AppBar>

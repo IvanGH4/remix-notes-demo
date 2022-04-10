@@ -1,7 +1,8 @@
-import React, { ChangeEvent, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import { InputBase } from "@mui/material";
+import { Form, useTransition } from "remix";
+import { useEffect, useRef } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -46,24 +47,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchInput = () => {
-  const [filterTerm, setFilterTerm] = useState("");
+  const formRef = useRef<HTMLFormElement | null>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterTerm(event.target.value);
-  };
+  const handleSubmit = () => {
+    formRef?.current?.reset();
+  }
 
   return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        placeholder='Search…'
-        inputProps={{ "aria-label": "search" }}
-        value={filterTerm}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
-      />
-    </Search>
+    <Form method="get" action="/notes" onSubmit={handleSubmit}>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder='Search…'
+          inputProps={{ "aria-label": "search" }}
+          id='search'
+          name='search'
+          type='text'
+        />
+      </Search>
+    </Form>
   );
 };
 

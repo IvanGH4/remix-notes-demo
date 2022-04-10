@@ -1,8 +1,9 @@
 import { Form, Link, redirect, useLoaderData } from "remix";
 import type { ActionFunction, LoaderFunction } from "remix";
 import axios from "axios";
-import moment from "moment";
 import { marked } from "marked";
+import Note from '~/components/SingleNote';
+import { Container } from "@mui/material";
 
 export const action: ActionFunction = async ({ request, params }) => {
   const api_url: string = process.env.API_URL;
@@ -43,20 +44,8 @@ export default function SingleNote() {
   if (data.error) return <p>Error fetching note</p>;
 
   return (
-    <div>
-      <div className='links_header'>
-        <Link to='/notes'>Back</Link>
-        <Link to={`/note/update/${data._id}`}>Edit</Link>
-      </div>
-      <h2>{data.title}</h2>
-      <small>{moment(data.createdAt).format("MMM DD, YYYY")}</small>
-      <div dangerouslySetInnerHTML={{
-        __html: data.content
-      }} />
-      <Form method='post'>
-        <input type='hidden' name='_method' value='delete' />
-        <button type='submit'>Delete</button>
-      </Form>
-    </div>
+    <Container maxWidth="sm">
+      <Note note={data} />
+    </Container>
   );
 }

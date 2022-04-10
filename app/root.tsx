@@ -8,6 +8,8 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 
+import Navbar from '~/components/Nav/Navbar';
+
 import styles from '~/styles/styles.css';
 
 export const links = () => {
@@ -28,6 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body style={{ paddingTop: '80px' }}>
+        <Navbar />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
