@@ -11,6 +11,10 @@ body {
   padding: 50px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .add_note-form {
   max-width: 380px;
 }
@@ -32,10 +36,6 @@ body {
 .form-control {
   display: flex;
   flex-direction: column;
-}
-
-.form-control label {
-  margin: 10px 0;
 }
 
 .form-control.checkbox {

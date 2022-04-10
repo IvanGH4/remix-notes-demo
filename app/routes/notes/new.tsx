@@ -2,6 +2,18 @@ import { useActionData, useTransition, Form, Link } from "remix";
 import type { ActionFunction } from "remix";
 import axios from "axios";
 import { useEffect, useRef } from "react";
+import {
+  Button,
+  Checkbox,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormHelperText,
+  Input,
+  InputLabel,
+  TextareaAutosize,
+} from "@mui/material";
 
 export const action: ActionFunction = async ({ request }) => {
   const api_url: string = process.env.API_URL;
@@ -37,29 +49,39 @@ export default function New() {
   }, [transition.state]);
 
   return (
-    <div className='add_note-form'>
+    <Container maxWidth='sm' style={{ marginBottom: 20 }}>
       <div className='add_note-form_header'>
         <h2>New note</h2>
         <Link to='/notes'>Back</Link>
       </div>
       <Form method='post' action='/notes/new' ref={formRef}>
+        <FormControl sx={{ width: "100%", marginBottom: "20px" }}>
+          <Input id='title' name='title' type='text' placeholder='Title' />
+        </FormControl>
+        <FormControl sx={{ width: "100%", marginBottom: "20px" }}>
+          <TextareaAutosize minRows={3} placeholder='Content' />
+        </FormControl>
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox value='true' />}
+            label='Important'
+          />
+        </FormGroup>
         <div className='form-control'>
-          <label htmlFor='title'>Title</label>
-          <input id='title' name='title' type='text' />
-        </div>
-        <div className='form-control'>
-          <label htmlFor='content'>Content</label>
-          <textarea id='content' name='content' rows={4} />
-        </div>
-        <div className='form-control checkbox'>
-          <input id='important' type='checkbox' name='important' value='true' />
-          <label htmlFor='important'>Important</label>
-        </div>
-        <div className='form-control'>
-          <button type='submit' disabled={transition.state === 'submitting'}>Save</button>
+          {/* <button type='submit' disabled={transition.state === "submitting"}>
+            Save
+          </button> */}
+          <Button
+            variant='contained'
+            color='primary'
+            type='submit'
+            disabled={transition.state === "submitting"}
+          >
+            Save
+          </Button>
         </div>
       </Form>
       {actionData?.error && <p>There was an error, try again</p>}
-    </div>
+    </Container>
   );
 }

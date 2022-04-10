@@ -15,7 +15,7 @@ export const links = () => {
 }
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Notes" };
 };
 
 export default function App() {
@@ -27,7 +27,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body style={{ paddingTop: '80px' }}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

@@ -2,6 +2,8 @@ import { useLoaderData, Link, Outlet } from "remix";
 import type { LoaderFunction } from "remix";
 import { Note } from "~/types";
 import NoteCard from "~/components/NoteCard";
+import Navbar from "~/components/Nav/Navbar";
+import { Container } from "@mui/material";
 
 export const loader: LoaderFunction = async () => {
   const api_url: string = process.env.API_URL;
@@ -14,12 +16,11 @@ export default function Notes() {
 
   return (
     <>
-      <h1>Notes</h1>
-      <Link to='new'>Add new note</Link>
+      <Navbar />
       <Outlet />
-      <div className='notes'>
+      <Container maxWidth='sm'>
         {notes && notes.map((note) => <NoteCard key={note._id} note={note} />)}
-      </div>
+      </Container>
     </>
   );
 }
