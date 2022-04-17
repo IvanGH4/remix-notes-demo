@@ -12,7 +12,7 @@ export default function NoteCard({ note }: Props) {
     <Card
       sx={{ marginBottom: 5, backgroundColor: "#333" }}
       variant='elevation'
-      className='note_card'
+      className={`note_card ${note.important ? "important" : ""}`}
     >
       <Link to={`/note/${note._id}`}>
         <CardContent>

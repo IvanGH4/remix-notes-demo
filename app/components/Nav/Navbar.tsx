@@ -1,6 +1,15 @@
-import { useState } from "react";
-import { Link } from 'remix';
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, MenuItem } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Link } from "remix";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+  Button,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchInput from "./Search";
 
@@ -12,17 +21,23 @@ export default function SearchAppBar() {
     if (!isOpen) {
       setAnchorEl(event.currentTarget);
     } else {
-      setAnchorEl(null);  
+      setAnchorEl(null);
     }
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-  }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='fixed' color="secondary">
+      <AppBar position='fixed' color='secondary' className='navbar'>
+        {/* 
+        <div className='navbar_tooltip'>
+          <Button variant='contained' color='primary' size="small">
+            Clear filters
+          </Button>
+        </div> */}
         <Toolbar>
           <IconButton
             size='large'
@@ -31,9 +46,9 @@ export default function SearchAppBar() {
             aria-label='open drawer'
             sx={{ mr: 2 }}
             id='basic-button'
-            aria-controls={isOpen ? 'basic-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={isOpen ? 'true' : undefined}
+            aria-controls={isOpen ? "basic-menu" : undefined}
+            aria-haspopup='true'
+            aria-expanded={isOpen ? "true" : undefined}
             onClick={handleClick}
           >
             <MenuIcon />
@@ -47,23 +62,23 @@ export default function SearchAppBar() {
               }}
             >
               <MenuItem>
-                <Link to="/">Home</Link>
+                <Link to='/'>Home</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="new">New note</Link>
+                <Link to='/notes/new'>New note</Link>
               </MenuItem>
             </Menu>
           </IconButton>
-            <Typography
-              variant='h6'
-              noWrap
-              component='div'
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-            >
-            <Link to="/" style={{ color: 'white' }}>
+          <Typography
+            variant='h6'
+            noWrap
+            component='div'
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            <Link to='/' style={{ color: "white" }}>
               Notes
             </Link>
-            </Typography>
+          </Typography>
           <SearchInput />
         </Toolbar>
       </AppBar>

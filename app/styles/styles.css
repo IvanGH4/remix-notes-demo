@@ -15,6 +15,21 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  position: relative;
+}
+
+.navbar_tooltip {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 10%;
+  padding: 20px;
+  background-color: #9c27b0;
+  border-radius: 0 0 0 15px;
+}
+
 .add_note-form {
   max-width: 380px;
 }
@@ -96,4 +111,19 @@ a {
 
 .note_card a {
   text-decoration: none;
+}
+
+.note_card {
+  position: relative;
+}
+
+.note_card.important::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #FFBA6A;
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 100px;
 }

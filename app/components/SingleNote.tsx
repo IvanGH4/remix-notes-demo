@@ -17,7 +17,7 @@ const SingleNote = ({ note }: Props) => {
   return (
     <Card sx={{ backgroundColor: "#333" }}>
       <CardContent>
-        <Typography variant='h5' component='div' color='white'>
+        <Typography variant='h5' component='div' color={note.important ? 'green' : 'white'}>
           {note.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color='ActiveCaption'>

@@ -13,6 +13,7 @@ import {
   Input,
   InputLabel,
   TextareaAutosize,
+  Typography,
 } from "@mui/material";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -59,18 +60,18 @@ export default function New() {
           <Input id='title' name='title' type='text' placeholder='Title' />
         </FormControl>
         <FormControl sx={{ width: "100%", marginBottom: "20px" }}>
-          <TextareaAutosize minRows={3} placeholder='Content' />
+          <TextareaAutosize id='content' name='content' minRows={3} placeholder='Content' />
         </FormControl>
+        <Typography variant="body1" component="p">
+          New to Markdown? <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" rel="noopener noreferrer">Here's a quick guide</a>
+        </Typography>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox value='true' />}
+            control={<Checkbox id='important' name='important' value='true' />}
             label='Important'
           />
         </FormGroup>
         <div className='form-control'>
-          {/* <button type='submit' disabled={transition.state === "submitting"}>
-            Save
-          </button> */}
           <Button
             variant='contained'
             color='primary'
